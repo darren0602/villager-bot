@@ -56,6 +56,17 @@ class MyClient(discord.Client):
                 ))
             return
 
+        """
+        $location: Tells you the server location.
+        """
+        if command == "$location" or command == "$LOCATION":
+            guild_id = message.guild.id
+            region = self.get_guild(guild_id).region
+
+            await message.channel.send("We are in {}".format(
+                region
+            ))
+
 # Run test
 test_results = tests.setup_test()
 if test_results == False:
