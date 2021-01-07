@@ -1,4 +1,5 @@
 import constants
+import defaults
 
 """
 Wrapper around split to split
@@ -11,11 +12,16 @@ def msg_split(message, command_prefix="$"):
         command = temp[0]
         args = temp[1:]
 
+        try:
+            MAX_ARGS = constants.MAX_ARGS
+        except AttributeError:
+            MAX_ARGS = defaults.MAX_ARGS
+
         if args == []:
             print ("[I] Command {} has no arguments".format(command))
-        elif len(args) > constants.MAX_ARGS:
-            print("[W] Argument length exceeded! Using only first {}".format(constants.MAX_ARGS))
-            args = temp[1:constants.MAX_ARGS + 1]
+        elif len(args) > MAX_ARGS:
+            print("[W] Argument length exceeded! Using only first {}".format(MAX_ARGS))
+            args = temp[1:MAX_ARGS + 1]
 
         return command, args
     else:

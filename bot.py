@@ -2,6 +2,8 @@ import discord
 import random
 import utils
 import constants
+import defaults
+import tests
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -15,6 +17,8 @@ class MyClient(discord.Client):
         msg = message.content
         command, args = utils.msg_split(msg)
 
+        # Ignore messages that aren't
+        # command calls.
         if command == None:
             return
 
@@ -25,11 +29,23 @@ class MyClient(discord.Client):
         if command == "$whois" or command == "$WHOIS":
             print("Message from {0.author}: {0.content}".format(message))
 
+            # Use default value if constants
+            # not properly setup by user
+            try:
+                WHOIS_CHOICES = constants.WHOIS_CHOICES
+            except AttributeError:
+                WHOIS_CHOICES = defaults.WHOIS_CHOICES
+
             for arg in args:
                 await message.channel.send("{} is {}".format(
                     arg,
-                    constants.WHOIS_CHOICES[random.randint(0, len(constants.WHOIS_CHOICES))]
+                    WHOIS_CHOICES[random.randint(0, len(WHOIS_CHOICES))]
                 ))
+
+# Run test
+test_results = tests.setup_test()
+if test_results == False:
+    exit(-1)
 
 client = MyClient()
 client.run(constants.TOKEN)
