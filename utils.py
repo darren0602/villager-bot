@@ -1,4 +1,5 @@
 import constants
+import psutil
 
 """
 Wrapper around split to split
@@ -20,3 +21,19 @@ def msg_split(message, command_prefix="$"):
         return command, args
     else:
         return None, None
+
+"""
+Utility function to check if
+a certain process is up on the
+host machine.
+"""
+def check_if_process_running(proc_name):
+    # Iterate over the all the running process
+    for proc in psutil.process_iter():
+        try:
+            # Check if process name contains the given name string.
+            if proc_name.lower() in proc.name().lower():
+                return True
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return False
