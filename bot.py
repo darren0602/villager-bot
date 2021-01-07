@@ -39,7 +39,7 @@ class MyClient(discord.Client):
             for arg in args:
                 await message.channel.send("{} is {}".format(
                     arg,
-                    WHOIS_CHOICES[random.randint(0, len(WHOIS_CHOICES))]
+                    WHOIS_CHOICES[random.randint(0, len(WHOIS_CHOICES) - 1)]
                 ))
 
 # Run test
