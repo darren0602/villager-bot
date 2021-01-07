@@ -24,24 +24,24 @@ class MyClient(discord.Client):
 
         # Only log messages that start
         # with the '$' prefix.
-        if command.startswith("$"):
+        if msg.startswith("$"):
             print("Message from {0.author}: {0.content}".format(message))
 
-        if command == "$help" or command == "$HELP":
+        if utils.is_valid_command(command, "help"):
             await message.channel.send(defaults.HELP_MSG)
             return
 
         """
         $hello: Says hello back to you in case you're lonely.
         """
-        if command == "$hello" or command == "$HELLO":
+        if utils.is_valid_command(command, "hello"):
             await message.channel.send("Hello!")
             return
 
         """
         $whois <user1> <user2> <user3>: Tells you what kind of person each user is.
         """
-        if command == "$whois" or command == "$WHOIS":
+        if utils.is_valid_command(command, "whois"):
             # Use default value if constants
             # not properly setup by user
             try:
@@ -59,7 +59,7 @@ class MyClient(discord.Client):
         """
         $location: Tells you the server location.
         """
-        if command == "$location" or command == "$LOCATION":
+        if utils.is_valid_command(command, "location"):
             guild_id = message.guild.id
             region = self.get_guild(guild_id).region
 

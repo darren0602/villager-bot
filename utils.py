@@ -9,7 +9,8 @@ of args.
 def msg_split(message, command_prefix="$"):
     if message.startswith(command_prefix):
         temp = message.split()
-        command = temp[0]
+
+        command = temp[0].strip(command_prefix)
         args = temp[1:]
 
         try:
@@ -24,5 +25,27 @@ def msg_split(message, command_prefix="$"):
             args = temp[1:MAX_ARGS + 1]
 
         return command, args
-    else:
-        return None, None
+
+    return None, None
+
+def is_valid_command(string, command, allow_uppercase=True,
+                    alternative_commands=None):
+    # Simplest case
+    if string == "{}".format(command):
+        return True
+
+    # Uppercase
+    if allow_uppercase:
+        if string == "{}".format(command.upper()):
+            return True
+
+    if alternative_commands != None:
+        if string in alternative_commands:
+            return True
+
+        # Uppercase alternatives
+        uppercase_alternative_commands = [alternative_command.upper() for alternative_command in alternative_commands]
+        if string in uppercase_alternative_commands:
+            return True
+
+    return False
