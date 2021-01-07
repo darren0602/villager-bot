@@ -18,11 +18,11 @@ class MyClient(discord.Client):
         if command == None:
             return
 
-        if command == "$hello":
+        if command == "$hello" or command == "$HELLO":
             print("Message from {0.author}: {0.content}".format(message))
             await message.channel.send("Hello!")
 
-        if command == "$whois":
+        if command == "$whois" or command == "$WHOIS":
             print("Message from {0.author}: {0.content}".format(message))
 
             for arg in args:
