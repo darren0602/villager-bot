@@ -59,7 +59,7 @@ class MyClient(discord.Client):
         """
         $location: Tells you the server location.
         """
-        if utils.is_valid_command(command, "location"):
+        if utils.is_valid_command(command, "location", alternative_commands=["region", "where"]):
             guild_id = message.guild.id
             region = self.get_guild(guild_id).region
 
