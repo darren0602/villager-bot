@@ -12,8 +12,8 @@ WHOIS_CHOICES=[
 HELP_MSG="""
 Available commands:
 ```
-$help: Shows all available commands
-$hello: Says hello back to you in case you're lonely
+$help: Shows all available commands.
+$hello: Says hello back to you in case you're lonely.
 $whois <user1> <user2> <user3>: Tells you what kind of person each user is.
 ```
 """

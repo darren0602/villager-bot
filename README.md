@@ -23,9 +23,9 @@ WHOIS_CHOICES=<list(str) Whatever you wanna put>
 Run the script using `python bot.py`.
 
 ## Commands
-
+Available commands:
 ```
-$help: Shows all available commands
-$hello: Says hello back to you in case you're lonely
+$help: Shows all available commands.
+$hello: Says hello back to you in case you're lonely.
 $whois <user1> <user2> <user3>: Tells you what kind of person each user is.
 ```
