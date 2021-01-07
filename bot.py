@@ -15,6 +15,9 @@ class MyClient(discord.Client):
         msg = message.content
         command, args = utils.msg_split(msg)
 
+        if command == None:
+            return
+
         if command == "$hello":
             print("Message from {0.author}: {0.content}".format(message))
             await message.channel.send("Hello!")
