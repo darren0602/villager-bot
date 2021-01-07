@@ -22,19 +22,26 @@ class MyClient(discord.Client):
         if command == None:
             return
 
-        if command == "$help" or command == "$HELP":
+        # Only log messages that start
+        # with the '$' prefix.
+        if command.startswith("$"):
             print("Message from {0.author}: {0.content}".format(message))
+
+        if command == "$help" or command == "$HELP":
             await message.channel.send(defaults.HELP_MSG)
             return
 
+        """
+        $hello: Says hello back to you in case you're lonely.
+        """
         if command == "$hello" or command == "$HELLO":
-            print("Message from {0.author}: {0.content}".format(message))
             await message.channel.send("Hello!")
             return
 
+        """
+        $whois <user1> <user2> <user3>: Tells you what kind of person each user is.
+        """
         if command == "$whois" or command == "$WHOIS":
-            print("Message from {0.author}: {0.content}".format(message))
-
             # Use default value if constants
             # not properly setup by user
             try:
