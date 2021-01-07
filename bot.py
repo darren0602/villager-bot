@@ -22,6 +22,10 @@ class MyClient(discord.Client):
         if command == None:
             return
 
+        if command == "$help" or command == "$HELP":
+            print("Message from {0.author}: {0.content}".format(message))
+            await message.channel.send(defaults.HELP_MSG)
+
         if command == "$hello" or command == "$HELLO":
             print("Message from {0.author}: {0.content}".format(message))
             await message.channel.send("Hello!")
