@@ -49,6 +49,7 @@ class MyClient(discord.Client):
 # Run test
 test_results = tests.setup_test()
 if test_results == False:
+    print("Exiting...")
     exit(-1)
 
 client = MyClient()
