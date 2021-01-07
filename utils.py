@@ -1,5 +1,6 @@
 import constants
 import psutil
+import urllib.request
 
 """
 Wrapper around split to split
@@ -37,3 +38,9 @@ def check_if_process_running(proc_name):
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             pass
     return False
+
+"""
+Get public IP address
+"""
+def get_public_ip():
+    return urllib.request.urlopen('https://ident.me').read().decode('utf8')
