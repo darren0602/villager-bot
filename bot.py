@@ -25,8 +25,11 @@ class MyClient(discord.Client):
         # Only log messages that start
         # with the '$' prefix.
         if msg.startswith("$"):
-            print("Message from {0.author}: {0.content}".format(message))
+            print("Message from {0.author}: {0.content}".format(message))  
 
+        """
+        $help: Shows all available commands.
+        """
         if utils.is_valid_command(command, "help"):
             await message.channel.send(defaults.HELP_MSG)
             return
