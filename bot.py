@@ -27,9 +27,6 @@ class MyClient(discord.Client):
         if msg.startswith("$"):
             print("Message from {0.author}: {0.content}".format(message))  
 
-        #if msg.startswith("$" or "-"):   
-        #    await delete()
-
         """
         $help: Shows all available commands.
         """
