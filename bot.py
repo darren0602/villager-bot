@@ -27,9 +27,9 @@ class MyClient(discord.Client):
         if msg.startswith("$"):
             print("Message from {0.author}: {0.content}".format(message))  
 
-        # Delete sender commands after 5 seconds delay
-        if msg.startswith("$" or "-"):
-            await message.channel.delete(message,delay=5)
+        # Delete sender commands after 3 seconds delay
+        if msg.startswith("-") or msg.startswith("$"):
+            await message.delete(delay=3)
         """
         $help: Shows all available commands.
         """
