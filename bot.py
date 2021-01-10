@@ -25,7 +25,7 @@ class MyClient(discord.Client):
         # Only log messages that start
         # with the '$' prefix.
         if msg.startswith("$"):
-            print("Message from {0.author}: {0.content}".format(message))  
+            print("Message from {0.author}: {0.content}".format(message))
 
         """
         $help: Shows all available commands.
@@ -69,6 +69,21 @@ class MyClient(discord.Client):
             await message.channel.send("We are in {}".format(
                 region
             ))
+
+        """
+        $serverinfo: Information of server. Aliases: $info, $server.
+        """
+        if utils.is_valid_command(command, "serverinfo", alternative_commands=["info", "server"]):
+            guild_id = message.guild.id
+            name = self.get_guild(guild_id).name
+            description = self.get_guild(guild_id).description
+            owner = self.get_guild(guild_id).owner
+            region = self.get_guild(guild_id).region
+            member_count = self.get_guild(guild_id).member_count
+
+            await message.channel.send(
+            "```Server name: {}\nDescription: {}\nOwner: {}\nRegion: {}\nMember count: {}```"
+            .format(name,description,owner,region,member_count))
 
 # Run test
 test_results = tests.setup_test()
