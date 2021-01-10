@@ -6,8 +6,7 @@ Wrapper around split to split
 message into command and list
 of args.
 """
-def msg_split(message, command_prefixes= ["$","-"]):
-    print(message)
+def msg_split(message, command_prefixes=["$","-"]):
     for command_prefix in command_prefixes:
         if message.startswith(command_prefix):
             temp = message.split()
