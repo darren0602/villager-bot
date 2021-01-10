@@ -30,6 +30,7 @@ class MyClient(discord.Client):
         # Delete sender commands after 3 seconds delay
         if msg.startswith("-") or msg.startswith("$"):
             await message.delete(delay=3)
+
         """
         $help: Shows all available commands.
         """
