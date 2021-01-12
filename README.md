@@ -4,11 +4,9 @@
 
 ## Setting up
 
-Set up a virtualenv and install pip packages.
+Set up a virtual environment and install necessary pip packages
 
 ```bash
-python3 -m venv villager-bot
-source villager-bot/bin/activate
 pip install -r requirements.txt
 ```
 
