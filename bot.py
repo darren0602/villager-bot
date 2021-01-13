@@ -25,7 +25,11 @@ class MyClient(discord.Client):
         # Only log messages that start
         # with the '$' prefix.
         if msg.startswith("$"):
-            print("Message from {0.author}: {0.content}".format(message))
+            print("Message from {0.author}: {0.content}".format(message))  
+
+        # Delete sender commands after 3 seconds delay
+        if msg.startswith("-") or msg.startswith("$"):
+            await message.delete(delay=3)
 
         """
         $help: Shows all available commands.
@@ -84,7 +88,7 @@ class MyClient(discord.Client):
             await message.channel.send(
             "```Server name: {}\nDescription: {}\nOwner: {}\nRegion: {}\nMember count: {}```"
             .format(name,description,owner,region,member_count))
-
+            
 # Run test
 test_results = tests.setup_test()
 if test_results == False:
