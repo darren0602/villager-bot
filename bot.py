@@ -28,6 +28,8 @@ class MyClient(discord.Client):
             print("Message from {0.author}: {0.content}".format(message))
 
         # Delete sender commands after 3 seconds delay
+        # Also delete command with prefix - (groovy)
+        # to prevent clutter.
         if msg.startswith("-") or msg.startswith("$"):
             await message.delete(delay=3)
 
