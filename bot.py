@@ -25,7 +25,7 @@ class MyClient(discord.Client):
         # Only log messages that start
         # with the '$' prefix.
         if msg.startswith("$"):
-            print("Message from {0.author}: {0.content}".format(message))  
+            print("Message from {0.author}: {0.content}".format(message))
 
         # Delete sender commands after 3 seconds delay
         if msg.startswith("-") or msg.startswith("$"):
