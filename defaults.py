@@ -16,6 +16,5 @@ $help: Shows all available commands.
 $hello: Says hello back to you in case you're lonely.
 $whois <user1> <user2> <user3>: Tells you what kind of person each user is.
 $location: Tells you the server location. Aliases: $region, $where.
-$serverinfo: Tells you general information of the server. Aliases: $server, $info.
 ```
 """
