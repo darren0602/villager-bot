@@ -28,7 +28,7 @@ class MyClient(discord.Client):
             print("Message from {0.author}: {0.content}".format(message))  
 
         # Delete sender commands after 3 seconds delay
-        if msg.startswith("-") or msg.startswith("$"):
+        if msg.startswith("-play") or msg.startswith("-skip") or msg.startswith("-stop") or msg.startswith("$"):
             await message.delete(delay=3)
 
         """
